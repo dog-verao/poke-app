@@ -6,7 +6,7 @@ import { TableRow, TableHead, NotFound, Loading } from "./";
 type TableProps = {
   data: PokemonAdaptedInterface;
   isLoading: boolean;
-  isError: boolean;
+  isError?: boolean | null;
 }
 
 const Table: React.FC<TableProps> = ({ data, isLoading, isError }) => {

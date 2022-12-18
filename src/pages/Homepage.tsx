@@ -1,14 +1,12 @@
-import { useQueries } from 'react-query';
 import React, { useState, useRef } from 'react';
 import { Table, Search } from '../components';
-import useGetPokemonByName from "../hooks/useGetPokemonByName";
-import useGetPokemons from '../hooks/useGetPokemons';
+import useFetch from '../hooks/useFetch';
+import endpoints from '../api/endpoints/endpoints';
 
-
-const Homepage = () => {
-  const searchRef = useRef<HTMLInputElement>(null);
+const Homepage: React.FC = () => {
+  const searchRef = useRef<any>(null);
   const [search, setSearch] = useState<string>('pikachu');
-  const { data, isLoading, isError } = useGetPokemonByName(search);
+  const { data, isLoading, isError } = useFetch(endpoints.getPokemonByName(search));
 
   const handleFetch = () => {
     if (!searchRef.current) return;
