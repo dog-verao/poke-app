@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
-import { Table, Search } from '../components';
+import { Table, Search, List } from '../components';
 import useFetch from '../hooks/useFetch';
 import endpoints from '../api/endpoints/endpoints';
 
 const Homepage: React.FC = () => {
   const searchRef = useRef<any>(null);
   const [search, setSearch] = useState<string>('pikachu');
-  const { data, isLoading, isError } = useFetch(endpoints.getPokemonByName(search));
+  const { data: pokemon, isLoading, isError } = useFetch(endpoints.getPokemonByName(search));
+  const { data: pokemons } = useFetch(endpoints.getPokemons(0, 30));
 
   const handleFetch = () => {
     if (!searchRef.current) return;
@@ -15,8 +16,9 @@ const Homepage: React.FC = () => {
 
   return (
     <>
+      <List pokemons={pokemons?.results ?? []} />
       <Search searchRef={searchRef} handleClick={handleFetch} />
-      <Table data={data} isLoading={isLoading} isError={isError} />
+      <Table data={pokemon} isLoading={isLoading} isError={isError} />
     </>
   );
 }

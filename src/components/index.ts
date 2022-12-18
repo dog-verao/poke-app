@@ -6,4 +6,4 @@ export { default as PokemonMoves } from './PokemonMoves';
 export { default as Search } from './Search';
 export { default as Loading } from './Loading';
 export { default as NotFound } from './NotFound';
-
+export { default as List } from './List';
