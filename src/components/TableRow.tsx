@@ -9,6 +9,7 @@ type TableRowProps = {
 
 const TableRow: React.FC<TableRowProps> = ({ pokemon }) => {
   const { img, name, moves, types } = pokemon;
+  console.log(img)
   return (
     <tr className="bg-gray-100 border-b">
       <td className="px-6 py-4 whitespace-nowrap w-1/6 border-r-2">

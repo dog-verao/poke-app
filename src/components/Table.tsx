@@ -1,15 +1,16 @@
 import React from "react";
-import { PokemonAdaptedInterface } from "../api/adapters/pokemonAdapter";
-
+import pokemonAdapter from '../api/adapters/pokemonAdapter';
 import { TableRow, TableHead, NotFound, Loading } from "./";
+import { Pokemon } from "../api/interfaces/Pokemon";
 
 type TableProps = {
-  data: PokemonAdaptedInterface;
+  data: Pokemon;
   isLoading: boolean;
   isError?: boolean | null;
 }
 
 const Table: React.FC<TableProps> = ({ data, isLoading, isError }) => {
+  const pokemon = data && pokemonAdapter(data);
   return (
     <>
       {
@@ -20,7 +21,7 @@ const Table: React.FC<TableProps> = ({ data, isLoading, isError }) => {
             </thead>
             <tbody className="bg-gray-100 border-b">
               {
-                data && <TableRow pokemon={data} />
+                pokemon && <TableRow pokemon={pokemon} />
               }
             </tbody>
           </table>
