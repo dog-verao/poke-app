@@ -16,7 +16,7 @@ const Homepage: React.FC = () => {
 
   return (
     <>
-      <List pokemons={pokemons?.results ?? []} />
+      <List pokemons={pokemons?.results ?? []} handleClick={setSearch} />
       <Search searchRef={searchRef} handleClick={handleFetch} />
       <Table data={pokemon} isLoading={isLoading} isError={isError} />
     </>
