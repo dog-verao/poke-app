@@ -4,7 +4,7 @@ import Homepage from './pages/Homepage'
 function App() {
 
   return (
-    <div className="App">
+    <div className="flex flex-col items-center w-screen px-8">
       <Homepage />
     </div>
   )
